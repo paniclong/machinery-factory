@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class DefaultController extends AbstractController
+final class DefaultController extends AbstractController
 {
     /**
      * @return \Symfony\Component\HttpFoundation\Response

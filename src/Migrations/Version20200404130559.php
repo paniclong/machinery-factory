@@ -27,6 +27,19 @@ final class Version20200404130559 extends AbstractMigration
         $this->addSql('CREATE TABLE car_engine (id INT AUTO_INCREMENT NOT NULL, code VARCHAR(50) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE car_chassis (id INT AUTO_INCREMENT NOT NULL, code VARCHAR(50) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE car_mark (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(50) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+
+        /** @noinspection SqlDialectInspection */
+        $this->addSql(
+            "INSERT INTO car_mark(name) 
+                 VALUES('Audi'), ('BMW'), ('Mercedes'), ('Kia'), ('LADA'), ('Toyota'), ('Nissan'), ('Lexus'), ('Mazda');
+                 INSERT INTO car_model(name) 
+                 VALUES('2105'), ('2107'), ('A4'), ('A6'), ('A8'), ('Lanos'), 
+                 ('Rio'), ('Optima'), ('Cerato'), ('GTR33'), ('GTR34'), ('RX-8');
+                 INSERT INTO car_color(name) 
+                 VALUES('red'), ('green'), ('blue'), ('orange'), ('purple'), ('white'), 
+                 ('black'), ('yellow'), ('brown'), ('grey'), ('pink'), ('indigo');
+            "
+        );
     }
 
     public function down(Schema $schema): void

@@ -1,0 +1,9 @@
+engine:
+  prefix: '6B6'
+  length: 10 # Without prefix
+vin:
+  prefix: '88'
+  length: 16 # Without prefix
+chassis:
+  prefix: 'YYT'
+  length: 7 # Without prefix
