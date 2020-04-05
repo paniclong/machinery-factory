@@ -1,0 +1,16 @@
+max_speed:
+  min: 100
+  max: 300
+fuel:
+  [AU-92, AU-95, AU-98]
+torque:
+  min: 50
+  max: 200
+hoursepower:
+  min: 80
+  max: 350
+fuel_consumption:
+  min: 5
+  max: 35
+gear:
+  [REAR, FRONT]
