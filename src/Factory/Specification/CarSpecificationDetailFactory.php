@@ -25,7 +25,7 @@ class CarSpecificationDetailFactory
         $fuel = $data['fuel'];
         $carFuel = new CarFuel($fuel);
 
-        $torque = $data['max_speed'];
+        $torque = $data['torque'];
         $carTorque = new CarTorque($torque['min'], $torque['max']);
 
         $horsepower = $data['horsepower'];
