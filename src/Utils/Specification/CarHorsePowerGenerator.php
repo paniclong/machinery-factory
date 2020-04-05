@@ -11,11 +11,9 @@ class CarHorsePowerGenerator extends AbstractSpecificationGenerator
      */
     public function handle()
     {
-        $specification = $this->getSpecification();
-
         return \random_int(
-            $specification->getCarHorsepower()->getMin(),
-            $specification->getCarHorsepower()->getMax()
+            $this->specification->getCarHorsepower()->getMin(),
+            $this->specification->getCarHorsepower()->getMax()
         );
     }
 }

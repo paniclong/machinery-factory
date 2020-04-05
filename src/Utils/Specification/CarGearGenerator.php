@@ -9,9 +9,7 @@ class CarGearGenerator extends AbstractSpecificationGenerator
      */
     public function handle()
     {
-        $specification = $this->getSpecification();
-
-        $gearType = $specification->getCarGear()->getChoice();
+        $gearType = $this->specification->getCarGear()->getChoice();
         $key = \array_rand($gearType);
 
         return $gearType[$key];

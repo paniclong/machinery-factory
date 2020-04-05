@@ -9,9 +9,7 @@ class CarFuelGenerator extends AbstractSpecificationGenerator
      */
     public function handle(): string
     {
-        $specification = $this->getSpecification();
-
-        $fuelType = $specification->getCarFuel()->getChoice();
+        $fuelType = $this->specification->getCarFuel()->getChoice();
         $key = \array_rand($fuelType);
 
         return $fuelType[$key];

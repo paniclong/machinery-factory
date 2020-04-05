@@ -11,11 +11,9 @@ class CarFuelConsumptionGenerator extends AbstractSpecificationGenerator
      */
     public function handle()
     {
-        $specification = $this->getSpecification();
-
         return \random_int(
-            $specification->getCarFuelConsumption()->getMin(),
-            $specification->getCarFuelConsumption()->getMax()
+            $this->specification->getCarFuelConsumption()->getMin(),
+            $this->specification->getCarFuelConsumption()->getMax()
         );
     }
 }

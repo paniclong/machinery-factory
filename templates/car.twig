@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Список выпущенных машин!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+{% block body %}
+    <table border="1" style="border: 1px solid red;">
+        <tr>
+            <td> ID машины </td>
+            <td> Марка машины </td>
+            <td> Модель машины </td>
+            <td> VIN </td>
+            <td> Цвет машины </td>
+            <td> Код шасси </td>
+            <td> Код двигателя </td>
+            <td> Дата создания </td>
+            <td> Максимальная скорость </td>
+            <td> Привод </td>
+            <td> Тип топлива </td>
+            <td> Крутящий момент </td>
+            <td> Лошадиные силы </td>
+            <td> Расход топлива на 100 км </td>
+        </tr>
+        {% for car in cars %}
+            <tr style="">
+                <td> {{ car.getId }} </td>
+                <td> {{ car.getMarkModel.getCarMark.getName }} </td>
+                <td> {{ car.getMarkModel.getCarModel.getName }} </td>
+                <td> {{ car.getVin }} </td>
+                <td> {{ car.getColor.getName }} </td>
+                <td> {{ car.getChassis.getCode }} </td>
+                <td> {{ car.getEngine.getCode }} </td>
+                <td> {{ car.getDateCreate.format('Y-m-d') }} </td>
+                <td> {{ car.getSpecifications.getMaxSpeed }} </td>
+                <td> {{ car.getSpecifications.getGear }} </td>
+                <td> {{ car.getSpecifications.getFuel }} </td>
+                <td> {{ car.getSpecifications.getTorque }} </td>
+                <td> {{ car.getSpecifications.getHorsepower }} </td>
+                <td> {{ car.getSpecifications.getFuelConsumption }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>

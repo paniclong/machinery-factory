@@ -11,11 +11,9 @@ class CarMaxSpeedGenerator extends AbstractSpecificationGenerator
      */
     public function handle(): int
     {
-        $specification = $this->getSpecification();
-
         return \random_int(
-            $specification->getCarMaxSpeed()->getMin(),
-            $specification->getCarMaxSpeed()->getMax()
+            $this->specification->getCarMaxSpeed()->getMin(),
+            $this->specification->getCarMaxSpeed()->getMax()
         );
     }
 }

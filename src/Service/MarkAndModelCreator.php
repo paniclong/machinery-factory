@@ -5,21 +5,29 @@ namespace App\Service;
 use App\Entity\CarMark;
 use App\Entity\CarMarkModel;
 use App\Entity\CarModel;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\CarMarkRepository;
+use App\Repository\CarModelRepository;
 
 class MarkAndModelCreator
 {
     /**
-     * @var EntityManagerInterface
+     * @var CarMarkRepository
      */
-    private $entityManager;
+    private $carMarkRepository;
 
     /**
-     * @param EntityManagerInterface $entityManager
+     * @var CarModelRepository
      */
-    public function __construct(EntityManagerInterface $entityManager)
+    private $carModelRepository;
+
+    /**
+     * @param CarMarkRepository $carMarkRepository
+     * @param CarModelRepository $carModelRepository
+     */
+    public function __construct(CarMarkRepository $carMarkRepository, CarModelRepository $carModelRepository)
     {
-        $this->entityManager = $entityManager;
+        $this->carMarkRepository = $carMarkRepository;
+        $this->carModelRepository = $carModelRepository;
     }
 
     /**
@@ -29,21 +37,15 @@ class MarkAndModelCreator
      */
     public function make(): CarMarkModel
     {
-        $carMarkRepository = $this->entityManager->getRepository(CarMark::class);
-        $carModelRepository = $this->entityManager->getRepository(CarModel::class);
-
-        $count = \count($carMarkRepository->findAll());
-        $randomMark = \random_int(1, $count);
-
-        $count = \count($carModelRepository->findAll());
-        $randomModel = \random_int(1, $count);
+        $randomMark = \random_int(1, \count($this->carMarkRepository->findAll()));
+        $randomModel = \random_int(1, \count($this->carModelRepository->findAll()));
 
         $carMarkModel = new CarMarkModel();
 
         /** @var CarMark $carMark */
-        $carMark = $carMarkRepository->find($randomMark);
+        $carMark = $this->carMarkRepository->find($randomMark);
         /** @var CarModel $carModel */
-        $carModel = $carModelRepository->find($randomModel);
+        $carModel = $this->carModelRepository->find($randomModel);
 
         if (null === $carMark || null === $carModel) {
             throw new \Exception();

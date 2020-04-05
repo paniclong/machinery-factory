@@ -4,6 +4,7 @@ namespace App\Utils\Specification;
 
 use App\Factory\Specification\CarSpecificationDetailFactory;
 use App\Service\Config\CarConfigService;
+use App\Service\Validator\CarValidatorField;
 use App\ValueObject\Specification;
 
 abstract class AbstractSpecificationGenerator
@@ -19,23 +20,40 @@ abstract class AbstractSpecificationGenerator
     private $factory;
 
     /**
-     * @param CarConfigService $configLoader
-     * @param CarSpecificationDetailFactory $factory
+     * @var CarValidatorField
      */
-    public function __construct(CarConfigService $configLoader, CarSpecificationDetailFactory $factory)
-    {
-        $this->configLoader = $configLoader;
-        $this->factory = $factory;
-    }
+    private $carValidatorField;
 
     /**
-     * @return Specification
+     * @var Specification
      */
-    protected function getSpecification(): Specification
-    {
-        $specificationsArray = $this->configLoader->getSpecification();
+    protected $specification;
 
-        return $this->factory->from($specificationsArray);
+    /**
+     * @param CarConfigService $configLoader
+     * @param CarSpecificationDetailFactory $factory
+     * @param CarValidatorField $carValidatorField
+     */
+    public function __construct(
+        CarConfigService $configLoader,
+        CarSpecificationDetailFactory $factory,
+        CarValidatorField $carValidatorField
+    ) {
+        $this->configLoader = $configLoader;
+        $this->factory = $factory;
+        $this->carValidatorField = $carValidatorField;
+
+        $this->setSpecification();
+    }
+
+    private function setSpecification(): void
+    {
+        $carSpecification = $this->carValidatorField->validate(
+            $this->configLoader->getSpecification(),
+            CarValidatorField::FIELD_TYPE_SPECIFICATION
+        );
+
+        $this->specification = $this->factory->from($carSpecification);
     }
 
     /**

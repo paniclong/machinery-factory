@@ -11,11 +11,9 @@ class CarTorqueGenerator extends AbstractSpecificationGenerator
      */
     public function handle(): int
     {
-        $specification = $this->getSpecification();
-
         return \random_int(
-            $specification->getCarTorque()->getMin(),
-            $specification->getCarTorque()->getMax()
+            $this->specification->getCarTorque()->getMin(),
+            $this->specification->getCarTorque()->getMax()
         );
     }
 }

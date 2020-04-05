@@ -27,8 +27,7 @@ class ColorSelector
      */
     public function get(): CarColor
     {
-        $count = \count($this->repository->findAll());
-        $randomColor = \random_int(1, $count);
+        $randomColor = \random_int(1, \count($this->repository->findAll()));
 
         /** @var CarColor $carColor */
         $carColor = $this->repository->find($randomColor);
