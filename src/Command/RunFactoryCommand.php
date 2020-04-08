@@ -13,9 +13,20 @@ class RunFactoryCommand extends Command
 {
     protected static $defaultName = 'app:run-factory';
 
+    /**
+     * Стандартная задержка
+     */
     private const DEFAULT_DELAY = 5;
 
+    /**
+     * Минимальная задержка, проставляется когда введеное значение меньше нижнего порога
+     */
     private const MINIMUM_DELAY = 1;
+
+    /**
+     * Нижний порог, когда необходимо выставить минимальную задержку
+     */
+    private const LOWER_THRESHOLD_DELAY = 0;
 
     protected function configure(): void
     {
@@ -44,10 +55,7 @@ class RunFactoryCommand extends Command
         ]);
 
         $delay = (int)$input->getArgument('delay');
-
-        if ($delay <= 0) {
-            $delay = self::MINIMUM_DELAY;
-        }
+        $delay = $delay > self::LOWER_THRESHOLD_DELAY ? $delay : self::MINIMUM_DELAY;
 
         $output->writeln([
             'Set delay - ' . $delay . ' second',

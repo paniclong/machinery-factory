@@ -13,9 +13,6 @@ class CarEngineFactory implements FactoryInterface
      */
     public function from(array $data): Engine
     {
-        $prefix = $data['prefix'];
-        $length = $data['length'];
-
-        return new Engine($prefix, $length);
+        return new Engine($data['prefix'], $data['length']);
     }
 }

@@ -63,10 +63,7 @@ class CarValidatorField
             throw new \InvalidArgumentException('Main field not isset');
         }
 
-        $fieldsForValidate = $data[$type];
-        $rightFields = self::VALIDATE_FIELDS[$type];
-
-        $this->validateCustomFields($fieldsForValidate, $rightFields);
+        $this->validateCustomFields($data[$type], self::VALIDATE_FIELDS[$type]);
 
         return $data[$type];
     }

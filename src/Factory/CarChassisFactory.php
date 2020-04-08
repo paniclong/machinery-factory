@@ -13,9 +13,6 @@ class CarChassisFactory implements FactoryInterface
      */
     public function from(array $data): Chassis
     {
-        $prefix = $data['prefix'];
-        $length = $data['length'];
-
-        return new Chassis($prefix, $length);
+        return new Chassis($data['prefix'], $data['length']);
     }
 }

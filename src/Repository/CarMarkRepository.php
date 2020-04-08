@@ -19,6 +19,19 @@ class CarMarkRepository extends ServiceEntityRepository
         parent::__construct($registry, CarMark::class);
     }
 
+    /**
+     * @return array
+     */
+    public function findAllIds(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->select('c.id')
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return CarMark[] Returns an array of CarMark objects
     //  */
