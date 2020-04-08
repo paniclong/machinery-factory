@@ -2,19 +2,19 @@
 
 namespace App\Service\Builder;
 
-use App\Service\Generator\CarVINGenerator;
+use App\Service\Dummy\Generator\Car\VINDummyGenerator;
 
 class CarVINBuilder implements CarBuilderInterface
 {
     /**
-     * @var CarVINGenerator
+     * @var VINDummyGenerator
      */
     private $generator;
 
     /**
-     * @param CarVINGenerator $generator
+     * @param VINDummyGenerator $generator
      */
-    public function __construct(CarVINGenerator $generator)
+    public function __construct(VINDummyGenerator $generator)
     {
         $this->generator = $generator;
     }

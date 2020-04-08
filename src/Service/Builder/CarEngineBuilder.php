@@ -3,19 +3,19 @@
 namespace App\Service\Builder;
 
 use App\Entity\CarEngine;
-use App\Service\Generator\CarEngineGenerator;
+use App\Service\Dummy\Generator\Car\EngineDummyGenerator;
 
 class CarEngineBuilder implements CarBuilderInterface
 {
     /**
-     * @var CarEngineGenerator
+     * @var EngineDummyGenerator
      */
     private $carEngineGenerator;
 
     /**
-     * @param CarEngineGenerator $carEngineGenerator
+     * @param EngineDummyGenerator $carEngineGenerator
      */
-    public function __construct(CarEngineGenerator $carEngineGenerator)
+    public function __construct(EngineDummyGenerator $carEngineGenerator)
     {
         $this->carEngineGenerator = $carEngineGenerator;
     }

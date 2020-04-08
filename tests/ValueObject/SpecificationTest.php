@@ -2,44 +2,44 @@
 
 namespace App\Tests\ValueObject;
 
-use App\ValueObject\Detail\CarFuel;
-use App\ValueObject\Detail\CarFuelConsumption;
+use App\ValueObject\Detail\Fuel;
+use App\ValueObject\Detail\FuelConsumption;
 use App\ValueObject\Detail\CarGear;
-use App\ValueObject\Detail\CarHorsepower;
-use App\ValueObject\Detail\CarMaxSpeed;
-use App\ValueObject\Detail\CarTorque;
-use App\ValueObject\Specification;
+use App\ValueObject\Detail\Horsepower;
+use App\ValueObject\Detail\MaxSpeed;
+use App\ValueObject\Detail\Torque;
+use App\ValueObject\CarSpecificationDummy;
 use PHPUnit\Framework\TestCase;
 
 class SpecificationTest extends TestCase
 {
     /**
-     * @var Specification
+     * @var CarSpecificationDummy
      */
     private $specification;
 
     /**
-     * @var CarMaxSpeed
+     * @var MaxSpeed
      */
     private $carMaxSpeed;
 
     /**
-     * @var CarFuel
+     * @var Fuel
      */
     private $carFuel;
 
     /**
-     * @var CarTorque
+     * @var Torque
      */
     private $carTorque;
 
     /**
-     * @var CarHorsepower
+     * @var Horsepower
      */
     private $carHorsePower;
 
     /**
-     * @var CarFuelConsumption
+     * @var FuelConsumption
      */
     private $carFuelConsumption;
 
@@ -49,8 +49,8 @@ class SpecificationTest extends TestCase
     private $carGer;
 
     /**
-     * @covers \App\ValueObject\Specification::__construct
-     * @covers \App\ValueObject\Specification::getCarMaxSpeed
+     * @covers \App\ValueObject\CarSpecificationDummy::__construct
+     * @covers \App\ValueObject\CarSpecificationDummy::getCarMaxSpeed
      */
     public function testGetCarMaxSpeed(): void
     {
@@ -58,7 +58,7 @@ class SpecificationTest extends TestCase
     }
 
     /**
-     * @covers \App\ValueObject\Specification::getCarFuel
+     * @covers \App\ValueObject\CarSpecificationDummy::getCarFuel
      */
     public function testGetCarFuel(): void
     {
@@ -66,7 +66,7 @@ class SpecificationTest extends TestCase
     }
 
     /**
-     * @covers \App\ValueObject\Specification::getCarTorque
+     * @covers \App\ValueObject\CarSpecificationDummy::getCarTorque
      */
     public function testGetCarTorque(): void
     {
@@ -74,7 +74,7 @@ class SpecificationTest extends TestCase
     }
 
     /**
-     * @covers \App\ValueObject\Specification::getCarHorsepower
+     * @covers \App\ValueObject\CarSpecificationDummy::getCarHorsepower
      */
     public function testGetCarHorsepower(): void
     {
@@ -82,7 +82,7 @@ class SpecificationTest extends TestCase
     }
 
     /**
-     * @covers \App\ValueObject\Specification::getCarFuelConsumption
+     * @covers \App\ValueObject\CarSpecificationDummy::getCarFuelConsumption
      */
     public function testGetCarFuelConsumption(): void
     {
@@ -90,7 +90,7 @@ class SpecificationTest extends TestCase
     }
 
     /**
-     * @covers \App\ValueObject\Specification::getCarGear
+     * @covers \App\ValueObject\CarSpecificationDummy::getCarGear
      */
     public function testGetCarGear(): void
     {
@@ -101,12 +101,12 @@ class SpecificationTest extends TestCase
     {
         parent::setUp();
 
-        $this->specification = new Specification(
-            $this->carMaxSpeed = $this->createMock(CarMaxSpeed::class),
-            $this->carFuel = $this->createMock(CarFuel::class),
-            $this->carTorque = $this->createMock(CarTorque::class),
-            $this->carHorsePower = $this->createMock(CarHorsepower::class),
-            $this->carFuelConsumption = $this->createMock(CarFuelConsumption::class),
+        $this->specification = new CarSpecificationDummy(
+            $this->carMaxSpeed = $this->createMock(MaxSpeed::class),
+            $this->carFuel = $this->createMock(Fuel::class),
+            $this->carTorque = $this->createMock(Torque::class),
+            $this->carHorsePower = $this->createMock(Horsepower::class),
+            $this->carFuelConsumption = $this->createMock(FuelConsumption::class),
             $this->carGer = $this->createMock(CarGear::class)
         );
     }

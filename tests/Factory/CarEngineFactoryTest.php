@@ -2,8 +2,8 @@
 
 namespace App\Tests\Factory;
 
-use App\Factory\CarEngineFactory;
-use App\ValueObject\Engine;
+use App\Factory\EngineDummyFactory;
+use App\ValueObject\CarEngineDummy;
 use PHPUnit\Framework\TestCase;
 
 class CarEngineFactoryTest extends TestCase
@@ -11,7 +11,7 @@ class CarEngineFactoryTest extends TestCase
     private $factory;
 
     /**
-     * @covers \App\Factory\CarEngineFactory::from
+     * @covers \App\Factory\EngineDummyFactory::from
      */
     public function testFrom(): void
     {
@@ -25,7 +25,7 @@ class CarEngineFactoryTest extends TestCase
             ->method('from')
             ->with($data)
             ->willReturn(
-                $engine = $this->createMock(Engine::class)
+                $engine = $this->createMock(CarEngineDummy::class)
             );
 
         $this->assertEquals($engine, $this->factory->from($data));
@@ -33,6 +33,6 @@ class CarEngineFactoryTest extends TestCase
 
     protected function setUp()
     {
-        $this->factory = $this->createMock(CarEngineFactory::class);
+        $this->factory = $this->createMock(EngineDummyFactory::class);
     }
 }
