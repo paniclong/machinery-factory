@@ -27,6 +27,6 @@ class EngineTest extends TestCase
     {
         parent::setUp();
 
-        $this->vin = new \App\ValueObject\Engine($this->data['prefix'], $this->data['length']);
+        $this->vin = new \App\ValueObject\CarEngineDummy($this->data['prefix'], $this->data['length']);
     }
 }

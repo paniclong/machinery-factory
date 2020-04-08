@@ -3,25 +3,25 @@
 namespace App\Service\Builder;
 
 use App\Entity\CarSpecifications;
-use App\Service\Generator\CarSpecificationGenerator;
-use App\ValueObject\Detail\CarFuel;
-use App\ValueObject\Detail\CarFuelConsumption;
-use App\ValueObject\Detail\CarGear;
-use App\ValueObject\Detail\CarHorsepower;
-use App\ValueObject\Detail\CarMaxSpeed;
-use App\ValueObject\Detail\CarTorque;
+use App\Service\Dummy\Generator\Car\SpecificationDummyGenerator;
+use App\ValueObject\Car\Specifications\Fuel;
+use App\ValueObject\Car\Specifications\FuelConsumption;
+use App\ValueObject\Car\Specifications\Gear;
+use App\ValueObject\Car\Specifications\Horsepower;
+use App\ValueObject\Car\Specifications\MaxSpeed;
+use App\ValueObject\Car\Specifications\Torque;
 
 class CarSpecificationBuilder implements CarBuilderInterface
 {
     /**
-     * @var CarSpecificationGenerator
+     * @var SpecificationDummyGenerator
      */
     private $generator;
 
     /**
-     * @param CarSpecificationGenerator $generator
+     * @param SpecificationDummyGenerator $generator
      */
-    public function __construct(CarSpecificationGenerator $generator)
+    public function __construct(SpecificationDummyGenerator $generator)
     {
         $this->generator = $generator;
     }
@@ -38,11 +38,11 @@ class CarSpecificationBuilder implements CarBuilderInterface
         $carSpecification = new CarSpecifications();
 
         return $carSpecification
-            ->setTorque($result[CarTorque::class])
-            ->setFuel($result[CarFuel::class])
-            ->setMaxSpeed($result[CarMaxSpeed::class])
-            ->setHorsepower($result[CarHorsepower::class])
-            ->setFuelConsumption($result[CarFuelConsumption::class])
-            ->setGear($result[CarGear::class]);
+            ->setTorque($result[Torque::class])
+            ->setFuel($result[Fuel::class])
+            ->setMaxSpeed($result[MaxSpeed::class])
+            ->setHorsepower($result[Horsepower::class])
+            ->setFuelConsumption($result[FuelConsumption::class])
+            ->setGear($result[Gear::class]);
     }
 }

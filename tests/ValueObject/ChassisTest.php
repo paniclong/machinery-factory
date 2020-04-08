@@ -27,6 +27,6 @@ class ChassisTest extends TestCase
     {
         parent::setUp();
 
-        $this->vin = new \App\ValueObject\Chassis($this->data['prefix'], $this->data['length']);
+        $this->vin = new \App\ValueObject\CarChassisDummy($this->data['prefix'], $this->data['length']);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Tests\Factory;
 
-use App\Factory\CarVINFactory;
-use App\ValueObject\VIN;
+use App\Factory\VINDummyFactory;
+use App\ValueObject\CarVINDummy;
 use PHPUnit\Framework\TestCase;
 
 class CarVINFactoryTest extends TestCase
@@ -11,7 +11,7 @@ class CarVINFactoryTest extends TestCase
     private $factory;
 
     /**
-     * @covers \App\Factory\CarVINFactory::from
+     * @covers \App\Factory\VINDummyFactory::from
      */
     public function testFrom(): void
     {
@@ -25,7 +25,7 @@ class CarVINFactoryTest extends TestCase
             ->method('from')
             ->with($data)
             ->willReturn(
-                $vin = $this->createMock(VIN::class)
+                $vin = $this->createMock(CarVINDummy::class)
             );
 
         $this->assertEquals($vin, $this->factory->from($data));
@@ -33,6 +33,6 @@ class CarVINFactoryTest extends TestCase
 
     protected function setUp()
     {
-        $this->factory = $this->createMock(CarVINFactory::class);
+        $this->factory = $this->createMock(VINDummyFactory::class);
     }
 }

@@ -27,6 +27,6 @@ class VINTest extends TestCase
     {
         parent::setUp();
 
-        $this->vin = new \App\ValueObject\VIN($this->data['prefix'], $this->data['length']);
+        $this->vin = new \App\ValueObject\CarVINDummy($this->data['prefix'], $this->data['length']);
     }
 }

@@ -1,9 +1,11 @@
+# Добавляя, изменяя или удаляя значения не забудьте изменить сам валидатор
+# @see src/Service/Validator/CarValidatorField.php
 specification:
   max_speed:
     min: 100
     max: 300
   fuel:
-    ['AU-92', 'AU-95', 'AU-98']
+    ['АИ-92', 'АИ-95', 'АИ-98']
   torque:
     min: 50
     max: 200
@@ -14,4 +16,4 @@ specification:
     min: 5
     max: 35
   gear:
-    ['REAR', 'FRONT']
+    ['Передний', 'Задний', 'Полный']
