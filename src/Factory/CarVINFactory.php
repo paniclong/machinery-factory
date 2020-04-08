@@ -13,9 +13,6 @@ class CarVINFactory implements FactoryInterface
      */
     public function from(array $data): VIN
     {
-        $prefix = $data['prefix'];
-        $length = $data['length'];
-
-        return new VIN($prefix, $length);
+        return new VIN($data['prefix'], $data['length']);
     }
 }

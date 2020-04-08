@@ -26,10 +26,6 @@ class CarChassisBuilder implements CarBuilderInterface
      */
     public function build(): CarChassis
     {
-        $carChassis = new CarChassis();
-
-        $carChassis->setCode($this->generator->generate());
-
-        return $carChassis;
+        return (new CarChassis())->setCode($this->generator->generate());
     }
 }

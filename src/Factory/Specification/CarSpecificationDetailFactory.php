@@ -20,30 +20,17 @@ class CarSpecificationDetailFactory
     public function from(array $data): Specification
     {
         $maxSpeed = $data['max_speed'];
-        $carMaxSpeed = new CarMaxSpeed($maxSpeed['min'], $maxSpeed['max']);
-
-        $fuel = $data['fuel'];
-        $carFuel = new CarFuel($fuel);
-
         $torque = $data['torque'];
-        $carTorque = new CarTorque($torque['min'], $torque['max']);
-
         $horsepower = $data['horsepower'];
-        $carHorsepower = new CarHorsepower($horsepower['min'], $horsepower['max']);
-
         $fuelConsumption = $data['fuel_consumption'];
-        $carFuelConsumption = new CarFuelConsumption($fuelConsumption['min'], $fuelConsumption['max']);
-
-        $gear = $data['gear'];
-        $carGear = new CarGear($gear);
 
         return new Specification(
-            $carMaxSpeed,
-            $carFuel,
-            $carTorque,
-            $carHorsepower,
-            $carFuelConsumption,
-            $carGear
+            new CarMaxSpeed($maxSpeed['min'], $maxSpeed['max']),
+            new CarFuel($data['fuel']),
+            new CarTorque($torque['min'], $torque['max']),
+            new CarHorsepower($horsepower['min'], $horsepower['max']),
+            new CarFuelConsumption($fuelConsumption['min'], $fuelConsumption['max']),
+            new CarGear($data['gear'])
         );
     }
 }

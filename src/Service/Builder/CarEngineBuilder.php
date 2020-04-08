@@ -27,10 +27,6 @@ class CarEngineBuilder implements CarBuilderInterface
      */
     public function build(): CarEngine
     {
-        $carEngine = new CarEngine();
-
-        $carEngine->setCode($this->carEngineGenerator->generate());
-
-        return $carEngine;
+        return (new CarEngine())->setCode($this->carEngineGenerator->generate());
     }
 }

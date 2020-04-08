@@ -37,8 +37,19 @@ class MarkAndModelCreator
      */
     public function make(): CarMarkModel
     {
-        $randomMark = \random_int(1, \count($this->carMarkRepository->findAll()));
-        $randomModel = \random_int(1, \count($this->carModelRepository->findAll()));
+        $markIds = [];
+        $modelIds = [];
+
+        foreach ($this->carMarkRepository->findAllIds() as $markId) {
+            $markIds[] = \reset($markId);
+        }
+
+        foreach ($this->carModelRepository->findAllIds() as $modelId) {
+            $modelIds[] = \reset($modelId);
+        }
+
+        $randomMark = \array_rand(\array_flip($markIds));
+        $randomModel = \array_rand(\array_flip($modelIds));
 
         $carMarkModel = new CarMarkModel();
 

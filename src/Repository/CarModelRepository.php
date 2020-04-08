@@ -19,6 +19,19 @@ class CarModelRepository extends ServiceEntityRepository
         parent::__construct($registry, CarModel::class);
     }
 
+    /**
+     * @return array
+     */
+    public function findAllIds(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->select('c.id')
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return CarModel[] Returns an array of CarModel objects
     //  */

@@ -19,6 +19,19 @@ class CarColorRepository extends ServiceEntityRepository
         parent::__construct($registry, CarColor::class);
     }
 
+    /**
+     * @return array
+     */
+    public function findAllIds(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->select('c.id')
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return CarColor[] Returns an array of CarColor objects
     //  */
